@@ -287,7 +287,7 @@ function Home() {
             >
               Lihat Contoh <ArrowRight size={16} />
             </button>
-            <a className="cmp-btn cmp-btn-ghost" href="https://wa.me/6281234567890">
+            <a className="cmp-btn cmp-btn-ghost" href="https://wa.me/6289636957453">
               Konsultasi Gratis
             </a>
           </div>
@@ -403,7 +403,7 @@ function Home() {
           <div className="cmp-cta">
             <h2>Siap Membuat Undangan Impian Anda?</h2>
             <p>Hubungi kami sekarang untuk konsultasi gratis dan penawaran menarik.</p>
-            <a className="cmp-btn cmp-btn-primary cmp-btn-lg" href="https://wa.me/6281234567890">
+            <a className="cmp-btn cmp-btn-primary cmp-btn-lg" href="https://wa.me/6289636957453">
               <MessageCircle size={18} /> Chat WhatsApp
             </a>
           </div>

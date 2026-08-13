@@ -61,7 +61,7 @@ function CompanyHeader() {
       </nav>
 
       <div className="cmp-nav-actions">
-        <a className="cmp-cta-btn" href="https://wa.me/6281234567890">
+        <a className="cmp-cta-btn" href="https://wa.me/6289636957453">
           <MessageCircle size={16} />
           <span className="cmp-cta-text">Pesan Sekarang</span>
         </a>
@@ -82,7 +82,7 @@ function CompanyHeader() {
               {item.label}
             </button>
           ))}
-          <a className="cmp-cta-btn" href="https://wa.me/6281234567890" onClick={() => setMenuOpen(false)}>
+          <a className="cmp-cta-btn" href="https://wa.me/6289636957453" onClick={() => setMenuOpen(false)}>
             <MessageCircle size={16} /> Pesan Sekarang
           </a>
         </div>
