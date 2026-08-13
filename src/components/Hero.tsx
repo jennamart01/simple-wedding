@@ -3,6 +3,7 @@ import styles from './Hero.module.css';
 import { FlourishDivider } from './Ornaments';
 import SectionOrnaments from './SectionOrnaments';
 import { Mail } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 interface Props {
   guestName: string;
@@ -10,6 +11,7 @@ interface Props {
 }
 
 const Hero: React.FC<Props> = ({ guestName, onOpen }) => {
+  const theme = useTheme();
   const [offsetY, setOffsetY] = useState(0);
   const handleScroll = () => setOffsetY(window.pageYOffset);
 
@@ -27,15 +29,15 @@ const Hero: React.FC<Props> = ({ guestName, onOpen }) => {
       <SectionOrnaments />
       <div 
         className={styles.parallaxBg} 
-        style={{ transform: `translateY(${offsetY * 0.5}px)` }}
+        style={{ backgroundImage: `url('${theme.heroImage}')`, transform: `translateY(${offsetY * 0.5}px)` }}
       ></div>
       <div className={styles.overlay}></div>
       <div className={styles.content}>
         <Mail className={styles.mailIcon} />
         <p className={styles.subtitle}>Pernikahan</p>
-        <h1 className={styles.title}>Ahmad & Fatimah</h1>
+        <h1 className={styles.title}>{theme.couple}</h1>
         <FlourishDivider className={styles.divider} />
-        <p className={styles.date}>Sabtu, 12 September 2026</p>
+        <p className={styles.date}>{theme.date}</p>
         <p className={styles.guestLabel}>Kepada Yth.</p>
         <p className={styles.guestName}>{guestName}</p>
         <button className="button" style={{ marginTop: '20px' }} onClick={handleClick}>

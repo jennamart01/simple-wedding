@@ -3,9 +3,11 @@ import styles from './RSVP.module.css';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import SectionOrnaments from './SectionOrnaments';
 import { APP_SCRIPT_URL, SECRET_TOKEN } from '../config';
+import { useTheme } from '../context/ThemeContext';
 
 
 const RSVP: React.FC = () => {
+  const theme = useTheme();
   const { domRef, isVisible } = useScrollReveal();
   const [formData, setFormData] = useState({
     name: '',
@@ -51,7 +53,7 @@ const RSVP: React.FC = () => {
       <SectionOrnaments />
       <div className={styles.container}>
         <h2>Konfirmasi Kehadiran</h2>
-        <p>Mohon konfirmasi kehadiran sebelum 1 September 2026</p>
+        <p>Mohon konfirmasi kehadiran sebelum {theme.rsvpDeadline}</p>
 
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.field}>

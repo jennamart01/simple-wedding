@@ -1,0 +1,53 @@
+/* Tema bawaan: Simple Wedding (dark gold) */
+
+.theme-timeless {
+  --color-bg: #0d1526;
+  --color-bg-alt: #141f38;
+  --color-bg-card: #16223d;
+  --color-gold: #b9a05c;
+  --color-gold-bright: #e0c878;
+  --color-silver: #a8b4cc;
+  --color-accent: #b9a05c;
+  --color-accent-light: rgba(185, 160, 92, 0.15);
+  --color-text: #e8ecf5;
+  --color-text-muted: #9aa7bd;
+}
+
+.theme-romantic {
+  --color-bg: #22070e;
+  --color-bg-alt: #33101a;
+  --color-bg-card: #3d1420;
+  --color-gold: #d9a7b0;
+  --color-gold-bright: #f2c6ce;
+  --color-silver: #b58a92;
+  --color-accent: #d9a7b0;
+  --color-accent-light: rgba(217, 167, 176, 0.15);
+  --color-text: #f5e8ea;
+  --color-text-muted: #c9a7ae;
+}
+
+.theme-bloom {
+  --color-bg: #0a1f16;
+  --color-bg-alt: #123024;
+  --color-bg-card: #163a2b;
+  --color-gold: #7fd4a4;
+  --color-gold-bright: #a9e8c4;
+  --color-silver: #7ba68e;
+  --color-accent: #7fd4a4;
+  --color-accent-light: rgba(127, 212, 164, 0.15);
+  --color-text: #e6f5ec;
+  --color-text-muted: #9fc2ad;
+}
+
+.theme-midnight {
+  --color-bg: #060c1a;
+  --color-bg-alt: #0c1730;
+  --color-bg-card: #101e3d;
+  --color-gold: #7ea0ff;
+  --color-gold-bright: #a8c0ff;
+  --color-silver: #8096c9;
+  --color-accent: #7ea0ff;
+  --color-accent-light: rgba(126, 160, 255, 0.15);
+  --color-text: #e8edff;
+  --color-text-muted: #9aa8d6;
+}

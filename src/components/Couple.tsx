@@ -2,12 +2,14 @@ import React from 'react';
 import styles from './Couple.module.css';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import SectionOrnaments from './SectionOrnaments';
+import { useTheme } from '../context/ThemeContext';
 
 import groomImg from '../assets/images/groom.jpg';
 import brideImg from '../assets/images/bride.jpg';
 
 const Couple: React.FC = () => {
   const { domRef, isVisible } = useScrollReveal();
+  const theme = useTheme();
 
   return (
     <section id="couple" className={`${styles.couple} reveal ${isVisible ? 'visible' : ''}`} ref={domRef}>
@@ -20,9 +22,9 @@ const Couple: React.FC = () => {
           <div className={styles.imagePlaceholder}>
             <img src={groomImg} alt="Groom" />
           </div>
-          <h2 className={styles.name}>Ahmad Fauzan</h2>
-          <p className={styles.parents}>Putra dari Bpk. H. Supriyadi & Ibu Hj. Maryam</p>
-          <a href="https://instagram.com" target="_blank" rel="noreferrer" className={styles.igLink}>@ahmadfauzan</a>
+          <h2 className={styles.name}>{theme.groom.name}</h2>
+          <p className={styles.parents}>{theme.groom.parents}</p>
+          <a href="https://instagram.com" target="_blank" rel="noreferrer" className={styles.igLink}>{theme.groom.ig}</a>
         </div>
 
         <div className={styles.ampersand}>&</div>
@@ -31,9 +33,9 @@ const Couple: React.FC = () => {
           <div className={styles.imagePlaceholder}>
             <img src={brideImg} alt="Bride" />
           </div>
-          <h2 className={styles.name}>Fatimah Az-Zahra</h2>
-          <p className={styles.parents}>Putri dari Bpk. H. Abdullah & Ibu Hj. Khadijah</p>
-          <a href="https://instagram.com" target="_blank" rel="noreferrer" className={styles.igLink}>@fatimah_azzahra</a>
+          <h2 className={styles.name}>{theme.bride.name}</h2>
+          <p className={styles.parents}>{theme.bride.parents}</p>
+          <a href="https://instagram.com" target="_blank" rel="noreferrer" className={styles.igLink}>{theme.bride.ig}</a>
         </div>
       </div>
     </section>
