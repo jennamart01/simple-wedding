@@ -1,0 +1,38 @@
+.quote {
+  background-color: var(--color-bg);
+  padding: 100px 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.arabic {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  line-height: 2.5;
+  color: var(--color-accent);
+}
+
+.translation {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--color-text);
+  margin-bottom: 20px;
+}
+
+.reference {
+  font-weight: 500;
+  color: var(--color-accent);
+}
+
+@media (max-width: 768px) {
+  .arabic {
+    font-size: 1.4rem;
+  }
+  .translation {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,134 @@
+:root {
+  --color-bg: #000000;
+  --color-bg-alt: #111111;
+  --color-bg-card: #1A1A1A;
+  --color-text: #E5E5E5;
+  --color-text-muted: #9CA3AF;
+  --color-gold: #D4AF37;
+  --color-gold-bright: #FFD700;
+  --color-silver: #C0C0C0;
+  --color-accent: var(--color-gold);
+  --color-accent-light: rgba(212, 175, 55, 0.15);
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Montserrat', sans-serif;
+  --transition-smooth: all 0.3s ease-in-out;
+  --border-accent: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+}
+
+/* Mobile-frame layout: constrain content to mobile width on all screens */
+.app-shell {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app-frame {
+  width: 100%;
+  max-width: 520px;
+  position: relative;
+  background: var(--color-bg);
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.8);
+}
+
+@media (min-width: 576px) {
+  body {
+    background: #0a0a0a;
+  }
+  .app-frame {
+    border-left: 1px solid var(--border-accent);
+    border-right: 1px solid var(--border-accent);
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--color-gold);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-smooth);
+}
+
+ul {
+  list-style: none;
+}
+
+section {
+  padding: 100px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative; /* For absolute ornaments */
+}
+
+.button {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: var(--color-gold);
+  color: #000;
+  border: none;
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.button:hover {
+  background-color: var(--color-gold-bright);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scrollbar styling for Silver look */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-silver);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold);
+}

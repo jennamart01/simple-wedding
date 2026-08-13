@@ -1,0 +1,110 @@
+.hero {
+  height: 100vh;
+  width: 100%;
+  max-width: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0;
+  color: white;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.parallaxBg {
+  position: absolute;
+  top: -50%; /* Offset for parallax movement */
+  left: 0;
+  width: 100%;
+  height: 150%; /* Larger than container for parallax */
+  background-image: url('/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  will-change: transform;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  animation: fadeIn 1.5s ease-out;
+}
+
+.subtitle {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.title {
+  font-size: 5rem;
+  margin: 10px 0;
+  font-weight: 400;
+}
+
+.divider {
+  color: white;
+  margin: 20px auto;
+}
+
+.date {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+}
+
+.mailIcon {
+  margin: 0 auto 10px;
+  color: var(--color-gold);
+  opacity: 0.8;
+}
+
+.guestLabel {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-top: 30px;
+  margin-bottom: 4px;
+}
+
+.guestName {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  color: var(--color-gold-bright);
+  font-weight: 700;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 3.5rem;
+  }
+  .subtitle {
+    font-size: 0.8rem;
+  }
+  .date {
+    font-size: 1.2rem;
+  }
+}

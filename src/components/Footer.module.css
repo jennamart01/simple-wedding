@@ -1,0 +1,35 @@
+.footer {
+  padding: 60px 20px;
+  text-align: center;
+  background-color: var(--color-bg);
+  border-top: 1px solid var(--color-accent-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.icon {
+  color: var(--color-accent);
+  margin-bottom: 20px;
+}
+
+.text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.couple {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: 30px;
+}
+
+.credit {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #aaa;
+}
