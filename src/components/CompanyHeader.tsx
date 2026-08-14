@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Menu, X, MessageCircle } from 'lucide-react'
+import { Menu, X, MessageCircle, ArrowUp } from 'lucide-react'
 
 const NAV_ITEMS = [
   { label: 'Fitur', id: 'features' },
@@ -19,6 +19,7 @@ function CompanyHeader() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [hidden, setHidden] = useState(false)
+  const [showToTop, setShowToTop] = useState(false)
 
   useEffect(() => {
     let lastY = window.scrollY
@@ -26,6 +27,7 @@ function CompanyHeader() {
       const y = window.scrollY
       setScrolled(y > 20)
       setHidden(y > 120 && y > lastY)
+      setShowToTop(y > lastY ? false : y > 300)
       lastY = y
     }
     window.addEventListener('scroll', onScroll)
@@ -38,9 +40,10 @@ function CompanyHeader() {
   }
 
   return (
-    <header
-      className={`cmp-nav ${scrolled ? 'cmp-nav-scrolled' : ''} ${hidden ? 'cmp-nav-hidden' : ''}`}
-    >
+    <>
+      <header
+        className={`cmp-nav ${scrolled ? 'cmp-nav-scrolled' : ''} ${hidden ? 'cmp-nav-hidden' : ''}`}
+      >
       <a
         className="cmp-logo"
         href="/simple-wedding/"
@@ -89,7 +92,27 @@ function CompanyHeader() {
           </a>
         </div>
       )}
-    </header>
+
+      </header>
+
+      <button
+        type="button"
+        className={`cmp-fab cmp-fab-top ${showToTop ? 'visible' : ''}`}
+        aria-label="Kembali ke atas"
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      >
+        <ArrowUp size={20} />
+      </button>
+      <a
+        className="cmp-fab cmp-fab-wa"
+        href="https://wa.me/6289636957453"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat WhatsApp"
+      >
+        <MessageCircle size={22} />
+      </a>
+    </>
   )
 }
 
