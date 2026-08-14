@@ -1,20 +1,27 @@
 .cmp-page {
-  --color-bg: #faf7f1;
-  --color-bg-alt: #f4efe4;
+  --color-bg: #fdf8f1;
+  --color-bg-alt: #f5edff;
   --color-bg-card: #ffffff;
-  --color-text: #2b2118;
-  --color-text-muted: #7a6d5a;
-  --color-gold: #a8842c;
-  --color-gold-bright: #c9a34a;
-  --color-accent: var(--color-gold);
-  --color-accent-light: rgba(168, 132, 44, 0.12);
-  --border-accent: 1px solid rgba(168, 132, 44, 0.25);
+  --color-text: #2d2640;
+  --color-text-muted: #6b6480;
+  --color-primary: #7c3aed;
+  --color-primary-bright: #9b5dff;
+  --color-secondary: #f59e0b;
+  --color-green: #10b981;
+  --color-pink: #ec4899;
+  --color-blue: #0ea5e9;
+  --color-gold: var(--color-primary);
+  --color-gold-bright: var(--color-primary-bright);
+  --color-accent: var(--color-primary);
+  --color-accent-light: rgba(124, 58, 237, 0.12);
+  --border-accent: 1px solid rgba(124, 58, 237, 0.25);
   min-height: 100vh;
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(900px circle at 12% -8%, rgba(168, 132, 44, 0.08), transparent 45%),
-    radial-gradient(800px circle at 88% 18%, rgba(168, 132, 44, 0.06), transparent 45%),
+    radial-gradient(900px circle at 12% -8%, rgba(124, 58, 237, 0.14), transparent 45%),
+    radial-gradient(800px circle at 88% 18%, rgba(245, 158, 11, 0.12), transparent 45%),
+    radial-gradient(700px circle at 50% 100%, rgba(16, 185, 129, 0.08), transparent 45%),
     var(--color-bg);
   color: var(--color-text);
 }
@@ -32,7 +39,7 @@
   padding: 14px 24px;
   background: rgba(10, 10, 12, 0.92);
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+  border-bottom: 1px solid rgba(124, 58, 237, 0.3);
   transition: transform 0.3s ease, box-shadow var(--transition-smooth);
 }
 
@@ -102,7 +109,7 @@
 
 .cmp-nav-links button:hover {
   color: var(--color-gold-bright);
-  background: rgba(212, 175, 55, 0.12);
+  background: rgba(124, 58, 237, 0.14);
 }
 
 .cmp-nav-actions {
@@ -197,13 +204,13 @@
 .cmp-btn-primary:hover {
   background: var(--color-gold-bright);
   transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(168, 132, 44, 0.35);
+  box-shadow: 0 8px 22px rgba(124, 58, 237, 0.4);
 }
 
 .cmp-btn-ghost {
   background: transparent;
   color: var(--color-gold);
-  border: 1px solid rgba(168, 132, 44, 0.5);
+  border: 1px solid rgba(124, 58, 237, 0.5);
 }
 
 .cmp-btn-ghost:hover {
@@ -314,7 +321,7 @@
 
 /* ===== Stats ===== */
 .cmp-stats {
-  background: var(--color-gold);
+  background: linear-gradient(90deg, #7c3aed, #0ea5e9, #10b981, #f59e0b, #ec4899);
   padding: 40px 24px;
 }
 
@@ -392,7 +399,7 @@
 
 .cmp-feature:hover {
   transform: translateY(-6px);
-  box-shadow: 0 14px 34px rgba(168, 132, 44, 0.14);
+  box-shadow: 0 14px 34px rgba(124, 58, 237, 0.16);
 }
 
 .cmp-feature-icon {
@@ -406,6 +413,15 @@
   background: var(--color-accent-light);
   color: var(--color-gold);
 }
+
+.cmp-features .cmp-feature:nth-child(1) .cmp-feature-icon { background: rgba(124, 58, 237, 0.14); color: #7c3aed; }
+.cmp-features .cmp-feature:nth-child(2) .cmp-feature-icon { background: rgba(14, 165, 233, 0.14); color: #0ea5e9; }
+.cmp-features .cmp-feature:nth-child(3) .cmp-feature-icon { background: rgba(16, 185, 129, 0.14); color: #10b981; }
+.cmp-features .cmp-feature:nth-child(4) .cmp-feature-icon { background: rgba(245, 158, 11, 0.16); color: #f59e0b; }
+.cmp-features .cmp-feature:nth-child(5) .cmp-feature-icon { background: rgba(236, 72, 153, 0.14); color: #ec4899; }
+.cmp-features .cmp-feature:nth-child(6) .cmp-feature-icon { background: rgba(124, 58, 237, 0.14); color: #7c3aed; }
+.cmp-features .cmp-feature:nth-child(7) .cmp-feature-icon { background: rgba(14, 165, 233, 0.14); color: #0ea5e9; }
+.cmp-features .cmp-feature:nth-child(8) .cmp-feature-icon { background: rgba(16, 185, 129, 0.14); color: #10b981; }
 
 .cmp-feature h3 {
   font-family: var(--font-sans);
@@ -439,7 +455,7 @@
 
 .cmp-theme-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 16px 38px rgba(168, 132, 44, 0.18);
+  box-shadow: 0 16px 38px rgba(124, 58, 237, 0.18);
 }
 
 .cmp-theme-thumb {
@@ -540,6 +556,11 @@
   margin-bottom: 14px;
 }
 
+.cmp-steps .cmp-step:nth-child(1) .cmp-step-num { background: #7c3aed; }
+.cmp-steps .cmp-step:nth-child(2) .cmp-step-num { background: #0ea5e9; }
+.cmp-steps .cmp-step:nth-child(3) .cmp-step-num { background: #10b981; }
+.cmp-steps .cmp-step:nth-child(4) .cmp-step-num { background: #f59e0b; }
+
 .cmp-step h3 {
   font-family: var(--font-sans);
   color: var(--color-text);
@@ -574,7 +595,7 @@
 
 .cmp-price-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 16px 38px rgba(168, 132, 44, 0.18);
+  box-shadow: 0 16px 38px rgba(124, 58, 237, 0.18);
 }
 
 .cmp-price-card.popular {
@@ -719,7 +740,7 @@
   justify-content: center;
   background: transparent;
   color: var(--color-gold);
-  border: 1px solid rgba(168, 132, 44, 0.5);
+  border: 1px solid rgba(124, 58, 237, 0.5);
   border-radius: 50%;
   font-size: 1.4rem;
   line-height: 1;
@@ -742,7 +763,7 @@
   height: 9px;
   padding: 0;
   border-radius: 50%;
-  background: rgba(168, 132, 44, 0.3);
+  background: rgba(124, 58, 237, 0.35);
   border: none;
   cursor: pointer;
   transition: var(--transition-smooth);
@@ -835,9 +856,9 @@
 .cmp-footer {
   text-align: center;
   padding: 40px 24px;
-  border-top: 1px solid rgba(212, 175, 55, 0.25);
-  color: #9ca3af;
-  background: #0a0a0c;
+  border-top: 1px solid rgba(124, 58, 237, 0.3);
+  color: #c9c4d6;
+  background: #241d3a;
 }
 
 .cmp-footer .cmp-logo {
@@ -889,7 +910,7 @@
   bottom: 20px;
   background: var(--color-bg-card);
   color: var(--color-gold);
-  border: 1px solid rgba(168, 132, 44, 0.4);
+  border: 1px solid rgba(124, 58, 237, 0.4);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   opacity: 0;
   transform: translateY(16px);
@@ -919,6 +940,79 @@
   transform: scale(1.08);
   background: #1ebe5b;
 }
+
+/* ===== Marquee ===== */
+.cmp-marquee-sec {
+  overflow: hidden;
+  background: #2d2640;
+  padding: 16px 0;
+}
+
+.cmp-marquee {
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.cmp-marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  animation: cmp-marquee-scroll 18s linear infinite;
+  will-change: transform;
+}
+
+.cmp-marquee:hover .cmp-marquee-track {
+  animation-play-state: paused;
+}
+
+.cmp-marquee-item {
+  display: inline-block;
+  margin-right: 48px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #fff;
+  position: relative;
+}
+
+.cmp-marquee-item::after {
+  content: '✦';
+  position: absolute;
+  right: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-secondary);
+}
+
+@keyframes cmp-marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.cmp-marquee-sec-bottom {
+  background: linear-gradient(90deg, #ec4899, #7c3aed, #0ea5e9);
+}
+
+/* ===== Floating decorative ===== */
+.cmp-float {
+  position: absolute;
+  pointer-events: none;
+  animation: cmp-float-bob 6s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes cmp-float-bob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-16px) rotate(10deg); }
+}
+
+.cmp-float-1 { top: 18%; left: 6%; font-size: 2rem; color: #f59e0b; animation-delay: 0s; }
+.cmp-float-2 { top: 12%; right: 8%; font-size: 1.6rem; color: #7c3aed; animation-delay: 0.8s; }
+.cmp-float-3 { bottom: 22%; left: 10%; font-size: 1.3rem; color: #0ea5e9; animation-delay: 1.4s; }
+.cmp-float-4 { top: 45%; right: 4%; font-size: 1.5rem; color: #ec4899; animation-delay: 2s; }
+.cmp-float-5 { bottom: 12%; right: 22%; font-size: 1.4rem; color: #10b981; animation-delay: 2.6s; }
 
 /* ===== Reveal ===== */
 .reveal-left {
@@ -999,7 +1093,7 @@
     gap: 4px;
     padding: 12px 16px 18px;
     background: rgba(10, 10, 12, 0.98);
-    border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+    border-bottom: 1px solid rgba(124, 58, 237, 0.3);
   }
 
   .cmp-nav-mobile button {
@@ -1016,7 +1110,7 @@
 
   .cmp-nav-mobile button:hover {
     color: var(--color-gold-bright);
-    background: rgba(212, 175, 55, 0.12);
+    background: rgba(124, 58, 237, 0.14);
   }
 
   .cmp-nav-mobile .cmp-cta-btn {

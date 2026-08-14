@@ -156,7 +156,20 @@ function SectionTitle({ kicker, title, subtitle }: { kicker: string; title: stri
     <div className="cmp-title">
       <span className="cmp-kicker">{kicker}</span>
       <h2>{title}</h2>
-      {subtitle && <p className="cmp-subtitle">{subtitle}</p>}
+      {subtitle && <p className="cmp-subtitle">{subtitle}</p>}    </div>
+  )
+}
+
+function Marquee({ items }: { items: string[] }) {
+  return (
+    <div className="cmp-marquee">
+      <div className="cmp-marquee-track">
+        {[...items, ...items, ...items].map((txt, i) => (
+          <span className="cmp-marquee-item" key={i}>
+            {txt}
+          </span>
+        ))}
+      </div>
     </div>
   )
 }
@@ -332,6 +345,11 @@ function Home() {
       <CompanyHeader />
 
       <section className="cmp-hero">
+        <span className="cmp-float cmp-float-1">✦</span>
+        <span className="cmp-float cmp-float-2">★</span>
+        <span className="cmp-float cmp-float-3">●</span>
+        <span className="cmp-float cmp-float-4">♥</span>
+        <span className="cmp-float cmp-float-5">✿</span>
         <div className="cmp-hero-text">
           <span className="cmp-hero-badge">Undangan Digital Premium</span>
           <h1>
@@ -356,6 +374,10 @@ function Home() {
           </div>
         </div>
         <HeroSlider />
+      </section>
+
+      <section className="cmp-marquee-sec">
+        <Marquee items={['Undangan Digital Termurah', 'Mulai Rp25.000', 'RSVP Online', 'Galeri & Musik', 'Kado Digital', 'QR Code']} />
       </section>
 
       <section className="cmp-stats">
@@ -510,6 +532,10 @@ function Home() {
           </div>
         </Reveal>
       </CompanySection>
+
+      <section className="cmp-marquee-sec cmp-marquee-sec-bottom">
+        <Marquee items={['Mulai Rp25.000', 'Semua Fitur Termasuk', 'Cepat & Praktis', 'Konsultasi Gratis', 'Chat WhatsApp']} />
+      </section>
 
       <footer className="cmp-footer">
         <span className="cmp-logo cmp-logo-footer">
