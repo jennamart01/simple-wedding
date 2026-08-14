@@ -77,18 +77,6 @@ const PACKAGES = [
       'Dukungan prioritas',
     ],
   },
-  {
-    name: 'Exclusive',
-    price: 50000,
-    tagline: 'Fitur penuh untuk pengalaman maksimal',
-    popular: false,
-    features: [
-      'Semua fitur Premium',
-      'Personalisasi nama tamu',
-      'Domain & branding custom',
-      'Fitur khusus lainnya',
-    ],
-  },
 ]
 
 const TESTIMONIALS = [
