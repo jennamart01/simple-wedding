@@ -177,7 +177,7 @@ function HeroSlider() {
   }, [])
 
   return (
-    <div className="cmp-hero-slider">
+    <PhoneFrame className="cmp-hero-slider">
       <div
         className="cmp-hero-track"
         style={{ transform: `translateX(-${index * 100}%)` }}
@@ -200,6 +200,14 @@ function HeroSlider() {
           />
         ))}
       </div>
+    </PhoneFrame>
+  )
+}
+
+function PhoneFrame({ children, className = '' }: { children: ReactNode; className?: string }) {
+  return (
+    <div className={`cmp-phone ${className}`}>
+      <div className="cmp-phone-screen">{children}</div>
     </div>
   )
 }
@@ -245,58 +253,24 @@ function FaqItem({ q, a }: { q: string; a: string }) {
   )
 }
 
-function TestimonialSlider() {
-  const [index, setIndex] = useState(0)
+function TestimonialGrid() {
   const { domRef, isVisible } = useScrollReveal()
 
-  useEffect(() => {
-    const t = setInterval(() => setIndex((i) => (i + 1) % TESTIMONIALS.length), 5000)
-    return () => clearInterval(t)
-  }, [])
-
-  const go = (dir: number) =>
-    setIndex((i) => (i + dir + TESTIMONIALS.length) % TESTIMONIALS.length)
-
   return (
-    <div ref={domRef} className={`reveal reveal-left ${isVisible ? 'visible' : ''}`}>
-      <div className="cmp-slider">
-        <div className="cmp-slider-track" style={{ transform: `translateX(-${index * 100}%)` }}>
-          {TESTIMONIALS.map((t) => (
-            <div className="cmp-slide" key={t.name}>
-              <div className="cmp-testimonial">
-                <div className="cmp-stars">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} size={16} fill="currentColor" />
-                  ))}
-                </div>
-                <p className="cmp-testimonial-text">"{t.text}"</p>
-                <p className="cmp-testimonial-name">
-                  {t.name} <span>— {t.city}</span>
-                </p>
-              </div>
-            </div>
-          ))}
+    <div ref={domRef} className={`reveal reveal-up ${isVisible ? 'visible' : ''} cmp-testimonials`}>
+      {TESTIMONIALS.map((t) => (
+        <div className="cmp-testimonial" key={t.name}>
+          <div className="cmp-stars">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <Star key={i} size={16} fill="currentColor" />
+            ))}
+          </div>
+          <p className="cmp-testimonial-text">"{t.text}"</p>
+          <p className="cmp-testimonial-name">
+            {t.name} <span>— {t.city}</span>
+          </p>
         </div>
-      </div>
-      <div className="cmp-slider-controls">
-        <button type="button" className="cmp-slider-arrow" onClick={() => go(-1)}>
-          ‹
-        </button>
-        <div className="cmp-slider-dots">
-          {TESTIMONIALS.map((t, i) => (
-            <button
-              key={t.name}
-              type="button"
-              className={`cmp-dot ${i === index ? 'active' : ''}`}
-              onClick={() => setIndex(i)}
-              aria-label={`Testimoni ${i + 1}`}
-            />
-          ))}
-        </div>
-        <button type="button" className="cmp-slider-arrow" onClick={() => go(1)}>
-          ›
-        </button>
-      </div>
+      ))}
     </div>
   )
 }
@@ -383,10 +357,10 @@ function Home() {
           {THEMES.map((t, i) => (
             <Reveal key={t.slug} direction={i % 2 === 0 ? 'left' : 'right'}>
               <Link className="cmp-theme-card" to={`/example/${t.slug}`}>
-                <div className="cmp-theme-thumb">
+                <PhoneFrame className="cmp-theme-thumb">
                   <img src={`${import.meta.env.BASE_URL}examples/${t.slug}.png`} alt={t.name} />
                   <span className="cmp-theme-tag">Lihat Demo</span>
-                </div>
+                </PhoneFrame>
                 <h3>{t.name}</h3>
                 <p>{t.desc}</p>
               </Link>
@@ -462,7 +436,7 @@ function Home() {
             subtitle="Pasangan yang sudah mempercayakan undangan mereka kepada Neo Digitalizer"
           />
         </Reveal>
-        <TestimonialSlider />
+        <TestimonialGrid />
       </CompanySection>
 
       <CompanySection id="faq">
