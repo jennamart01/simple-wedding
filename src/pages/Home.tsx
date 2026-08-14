@@ -22,7 +22,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal'
 import { THEMES } from '../themes'
 
 const HERO_SLIDES = THEMES.map((t) => ({
-  src: `/examples/${t.slug}.png`,
+  src: `${import.meta.env.BASE_URL}examples/${t.slug}.png`,
   label: t.name,
 }))
 
@@ -384,7 +384,7 @@ function Home() {
             <Reveal key={t.slug} direction={i % 2 === 0 ? 'left' : 'right'}>
               <Link className="cmp-theme-card" to={`/example/${t.slug}`}>
                 <div className="cmp-theme-thumb">
-                  <img src={`/examples/${t.slug}.png`} alt={t.name} />
+                  <img src={`${import.meta.env.BASE_URL}examples/${t.slug}.png`} alt={t.name} />
                   <span className="cmp-theme-tag">Lihat Demo</span>
                 </div>
                 <h3>{t.name}</h3>

@@ -237,7 +237,7 @@ export const SectionOrnament: React.FC<{ className?: string }> = ({ className })
     opacity: 0.15,
     overflow: 'hidden',
   }}>
-    <img src="/5682097_2950176.svg" alt=""
+    <img src={`${import.meta.env.BASE_URL}5682097_2950176.svg`} alt=""
       style={{ width: '100%', height: '100%', objectFit: 'cover' }}
     />
   </div>

@@ -26,7 +26,7 @@ const MusicPlayer: React.FC<Props> = ({ isOpen }) => {
     if (isOpen && !hasAutoPlayed.current) {
       hasAutoPlayed.current = true;
       if (!audioRef.current) {
-        audioRef.current = new Audio('/wedding-music.mp3');
+        audioRef.current = new Audio(`${import.meta.env.BASE_URL}wedding-music.mp3`);
         audioRef.current.loop = true;
       }
       audioRef.current.play();
@@ -36,7 +36,7 @@ const MusicPlayer: React.FC<Props> = ({ isOpen }) => {
 
   const togglePlay = () => {
     if (!audioRef.current) {
-      audioRef.current = new Audio('/wedding-music.mp3');
+      audioRef.current = new Audio(`${import.meta.env.BASE_URL}wedding-music.mp3`);
       audioRef.current.loop = true;
     }
 

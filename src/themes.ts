@@ -10,12 +10,14 @@ export interface Theme {
   bride: { name: string; parents: string; ig: string }
 }
 
+const asset = (p: string) => `${import.meta.env.BASE_URL}${p.replace(/^\//, '')}`
+
 export const THEMES: Theme[] = [
   {
     slug: 'simple-wedding',
     name: 'Simple Wedding',
     desc: 'Elegan dark gold, cocok untuk undangan modern.',
-    heroImage: '/hero-bg.jpg',
+    heroImage: asset('/hero-bg.jpg'),
     couple: 'Ahmad & Fatimah',
     date: 'Sabtu, 12 September 2026',
     rsvpDeadline: '1 September 2026',
@@ -26,7 +28,7 @@ export const THEMES: Theme[] = [
     slug: 'timeless',
     name: 'Timeless',
     desc: 'Abadi dan mewah dengan nuansa navy keemasan.',
-    heroImage: '/akhmad-jazuli-AF-60rjVslY-unsplash.jpg',
+    heroImage: asset('/akhmad-jazuli-AF-60rjVslY-unsplash.jpg'),
     couple: 'Raka & Nadia',
     date: 'Sabtu, 19 September 2026',
     rsvpDeadline: '8 September 2026',
@@ -37,7 +39,7 @@ export const THEMES: Theme[] = [
     slug: 'romantic',
     name: 'Romantic',
     desc: 'Nuansa romantis burgundy yang hangat dan lembut.',
-    heroImage: '/akhmad-jazuli-L56JtZ4HgBk-unsplash.jpg',
+    heroImage: asset('/akhmad-jazuli-L56JtZ4HgBk-unsplash.jpg'),
     couple: 'Bima & Aulia',
     date: 'Minggu, 27 September 2026',
     rsvpDeadline: '16 September 2026',
@@ -48,7 +50,7 @@ export const THEMES: Theme[] = [
     slug: 'bloom',
     name: 'Bloom',
     desc: 'Fresh floral dengan sentuhan emerald yang segar.',
-    heroImage: '/annie-spratt-OWq8w3BYMFY-unsplash.jpg',
+    heroImage: asset('/annie-spratt-OWq8w3BYMFY-unsplash.jpg'),
     couple: 'Dimas & Sekar',
     date: 'Sabtu, 3 Oktober 2026',
     rsvpDeadline: '22 September 2026',
@@ -59,7 +61,7 @@ export const THEMES: Theme[] = [
     slug: 'midnight',
     name: 'Midnight',
     desc: 'Elegan gelap dengan aksen biru malam berkilau.',
-    heroImage: '/hero-bg.jpg',
+    heroImage: asset('/hero-bg.jpg'),
     couple: 'Farhan & Aisyah',
     date: 'Sabtu, 10 Oktober 2026',
     rsvpDeadline: '29 September 2026',
