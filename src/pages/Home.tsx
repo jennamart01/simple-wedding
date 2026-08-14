@@ -95,6 +95,31 @@ const TESTIMONIALS = [
     city: 'Bandung',
     text: 'Musik latar dan animasinya bikin undangan terasa hidup. Banyak yang tanya dibuat dengan apa.',
   },
+  {
+    name: 'Lina & Doni',
+    city: 'Kediri',
+    text: 'Harganya paling terjangkau tapi fiturnya lengkap. Langsung dapat semua tanpa ribet upload file.',
+  },
+  {
+    name: 'Dewi & Farid',
+    city: 'Nganjuk',
+    text: 'Sangat membantu karena bisa pantau RSVP tamu secara langsung lewat dashbord. Praktis banget!',
+  },
+  {
+    name: 'Nadia & Raka',
+    city: 'Madiun',
+    text: 'Desainnya elegan dan pengiriman undangannya cepat. Tamu di luar kota juga mudah mengakses.',
+  },
+  {
+    name: 'Amalia & Rizky',
+    city: 'Bojonegoro',
+    text: 'QR code-nya memudahkan tamu membuka undangan langsung dari kartu. Keren dan berkesan.',
+  },
+  {
+    name: 'Putri & Aji',
+    city: 'Surabaya',
+    text: 'Support-nya ramah dan fast respon. Revisi dikerjakan cepat tanpa perlu menunggu lama.',
+  },
 ]
 
 const FAQS = [
@@ -241,24 +266,58 @@ function FaqItem({ q, a }: { q: string; a: string }) {
   )
 }
 
-function TestimonialGrid() {
+function TestimonialSlider() {
+  const [index, setIndex] = useState(0)
   const { domRef, isVisible } = useScrollReveal()
 
+  useEffect(() => {
+    const t = setInterval(() => setIndex((i) => (i + 1) % TESTIMONIALS.length), 5000)
+    return () => clearInterval(t)
+  }, [])
+
+  const go = (dir: number) =>
+    setIndex((i) => (i + dir + TESTIMONIALS.length) % TESTIMONIALS.length)
+
   return (
-    <div ref={domRef} className={`reveal reveal-up ${isVisible ? 'visible' : ''} cmp-testimonials`}>
-      {TESTIMONIALS.map((t) => (
-        <div className="cmp-testimonial" key={t.name}>
-          <div className="cmp-stars">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <Star key={i} size={16} fill="currentColor" />
-            ))}
-          </div>
-          <p className="cmp-testimonial-text">"{t.text}"</p>
-          <p className="cmp-testimonial-name">
-            {t.name} <span>— {t.city}</span>
-          </p>
+    <div ref={domRef} className={`reveal reveal-left ${isVisible ? 'visible' : ''}`}>
+      <div className="cmp-slider">
+        <div className="cmp-slider-track" style={{ transform: `translateX(-${index * 100}%)` }}>
+          {TESTIMONIALS.map((t) => (
+            <div className="cmp-slide" key={t.name}>
+              <div className="cmp-testimonial">
+                <div className="cmp-stars">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} size={16} fill="currentColor" />
+                  ))}
+                </div>
+                <p className="cmp-testimonial-text">"{t.text}"</p>
+                <p className="cmp-testimonial-name">
+                  {t.name} <span>— {t.city}</span>
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
+      <div className="cmp-slider-controls">
+        <button type="button" className="cmp-slider-arrow" onClick={() => go(-1)}>
+          ‹
+        </button>
+        <div className="cmp-slider-dots">
+          {TESTIMONIALS.map((t, i) => (
+            <button
+              key={t.name}
+              type="button"
+              className={`cmp-dot ${i === index ? 'active' : ''}`}
+              onClick={() => setIndex(i)}
+              aria-label={`Testimoni ${i + 1}`}
+            />
+          ))}
+        </div>
+        <button type="button" className="cmp-slider-arrow" onClick={() => go(1)}>
+          ›
+        </button>
+      </div>
     </div>
   )
 }
@@ -424,7 +483,7 @@ function Home() {
             subtitle="Pasangan yang sudah mempercayakan undangan mereka kepada Neo Digitalizer"
           />
         </Reveal>
-        <TestimonialGrid />
+        <TestimonialSlider />
       </CompanySection>
 
       <CompanySection id="faq">
