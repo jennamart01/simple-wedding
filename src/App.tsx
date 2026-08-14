@@ -1,11 +1,11 @@
-import { HashRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import ExampleInvitation from './pages/ExampleInvitation'
 import { THEMES } from './themes'
 
 function App() {
   return (
-    <HashRouter>
+    <BrowserRouter basename="/simple-wedding">
       <Routes>
         <Route path="/" element={<Home />} />
         {THEMES.map((t) => (
@@ -16,7 +16,7 @@ function App() {
           />
         ))}
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   )
 }
 

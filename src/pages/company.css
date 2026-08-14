@@ -494,6 +494,106 @@
   font-size: 0.92rem;
 }
 
+/* ===== Pricing ===== */
+.cmp-pricing {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+
+.cmp-price-card {
+  position: relative;
+  background: var(--color-bg-card);
+  border: var(--border-accent);
+  border-radius: 16px;
+  padding: 34px 28px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: var(--transition-smooth);
+}
+
+.cmp-price-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 38px rgba(168, 132, 44, 0.18);
+}
+
+.cmp-price-card.popular {
+  border: 2px solid var(--color-gold);
+  background: linear-gradient(180deg, var(--color-accent-light), var(--color-bg-card));
+}
+
+.cmp-price-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-gold);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 5px 16px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.cmp-price-name {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--color-text);
+  margin-bottom: 6px;
+}
+
+.cmp-price-tagline {
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
+  margin-bottom: 18px;
+}
+
+.cmp-price-value {
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  margin-bottom: 18px;
+}
+
+.cmp-price-currency {
+  font-size: 1.2rem;
+  font-weight: 600;
+  vertical-align: super;
+  margin-right: 2px;
+}
+
+.cmp-price-features {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  margin-bottom: 26px;
+}
+
+.cmp-price-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: var(--color-text);
+  font-size: 0.92rem;
+}
+
+.cmp-price-feature svg {
+  color: var(--color-gold);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.cmp-price-cta {
+  justify-content: center;
+  width: 100%;
+}
+
 /* ===== Testimonials ===== */
 .cmp-slider {
   position: relative;
@@ -688,6 +788,19 @@
 
 .cmp-footer p {
   font-size: 0.9rem;
+}
+
+.cmp-footer-cities {
+  margin-top: 8px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+}
+
+.cmp-footer-cities strong {
+  color: var(--color-gold);
+  font-weight: 600;
 }
 
 /* ===== Reveal ===== */

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jennamart01.github.io/simple-wedding/sitemap.xml

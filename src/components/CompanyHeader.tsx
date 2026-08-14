@@ -4,6 +4,7 @@ import { Menu, X, MessageCircle } from 'lucide-react'
 const NAV_ITEMS = [
   { label: 'Fitur', id: 'features' },
   { label: 'Tema', id: 'themes' },
+  { label: 'Paket', id: 'paket' },
   { label: 'Cara Kerja', id: 'steps' },
   { label: 'Testimoni', id: 'testimonials' },
   { label: 'FAQ', id: 'faq' },
@@ -42,7 +43,7 @@ function CompanyHeader() {
     >
       <a
         className="cmp-logo"
-        href="#/"
+        href="/simple-wedding/"
         onClick={(e) => {
           e.preventDefault()
           setMenuOpen(false)

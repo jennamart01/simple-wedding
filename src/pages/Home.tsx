@@ -14,6 +14,7 @@ import {
   ChevronDown,
   ArrowRight,
   Star,
+  Check,
 } from 'lucide-react'
 import './company.css'
 import CompanyHeader from '../components/CompanyHeader'
@@ -48,6 +49,46 @@ const STEPS = [
   { title: 'Isi Data Acara', desc: 'Lengkapi nama, tanggal, lokasi, dan detail acara lainnya.' },
   { title: 'Tambah Foto & Musik', desc: 'Unggah galeri foto dan pilih musik latar favorit.' },
   { title: 'Bagikan Link', desc: 'Sebarkan undangan ke seluruh tamu lewat satu link atau QR Code.' },
+]
+
+const PACKAGES = [
+  {
+    name: 'Starter',
+    price: 25000,
+    tagline: 'Paket hemat untuk kebutuhan dasar',
+    popular: false,
+    features: [
+      '1 tema undangan digital',
+      'Cover & rincian acara',
+      'Musik latar',
+      'Fitur kado & amplop digital',
+    ],
+  },
+  {
+    name: 'Premium',
+    price: 35000,
+    tagline: 'Paling laris, semua fitur sudah termasuk',
+    popular: true,
+    features: [
+      'Semua fitur Starter',
+      'RSVP Online real-time',
+      'Galeri foto & video',
+      'QR Code unik',
+      'Dukungan prioritas',
+    ],
+  },
+  {
+    name: 'Exclusive',
+    price: 50000,
+    tagline: 'Fitur penuh untuk pengalaman maksimal',
+    popular: false,
+    features: [
+      'Semua fitur Premium',
+      'Personalisasi nama tamu',
+      'Domain & branding custom',
+      'Fitur khusus lainnya',
+    ],
+  },
 ]
 
 const TESTIMONIALS = [
@@ -277,7 +318,8 @@ function Home() {
           </h1>
           <p>
             Buat undangan digital yang cantik, cepat dan mudah diedit — lengkap dengan RSVP Online,
-            Galeri, Musik, dan Kado Digital.
+            Galeri, Musik, dan Kado Digital. Mulai dari Rp25.000, termurah dan praktis. Melayani
+            Nganjuk, Kediri, Bojonegoro, Madiun, Jombang, Surabaya, dan Jakarta.
           </p>
           <div className="cmp-hero-actions">
             <button
@@ -374,6 +416,44 @@ function Home() {
         </div>
       </CompanySection>
 
+      <CompanySection id="paket">
+        <Reveal>
+          <SectionTitle
+            kicker="List Harga"
+            title="Pilih Paket Sesuai Kebutuhan"
+            subtitle="Mulai dari Rp25.000, sudah dapat semua fitur lengkap tanpa biaya tersembunyi"
+          />
+        </Reveal>
+        <div className="cmp-pricing">
+          {PACKAGES.map((pkg) => (
+            <Reveal key={pkg.name}>
+              <div className={`cmp-price-card ${pkg.popular ? 'popular' : ''}`}>
+                {pkg.popular && <span className="cmp-price-badge">Paling Diminati</span>}
+                <h3 className="cmp-price-name">{pkg.name}</h3>
+                <p className="cmp-price-tagline">{pkg.tagline}</p>
+                <div className="cmp-price-value">
+                  <span className="cmp-price-currency">Rp</span>
+                  {pkg.price.toLocaleString('id-ID')}
+                </div>
+                <div className="cmp-price-features">
+                  {pkg.features.map((f) => (
+                    <div className="cmp-price-feature" key={f}>
+                      <Check size={16} /> <span>{f}</span>
+                    </div>
+                  ))}
+                </div>
+                <a
+                  className={`cmp-btn ${pkg.popular ? 'cmp-btn-primary' : 'cmp-btn-ghost'} cmp-price-cta`}
+                  href="https://wa.me/6289636957453"
+                >
+                  Pilih {pkg.name}
+                </a>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </CompanySection>
+
       <CompanySection id="testimonials">
         <Reveal>
           <SectionTitle
@@ -413,6 +493,11 @@ function Home() {
       <footer className="cmp-footer">
         <span className="cmp-logo">Neo Digitalizer</span>
         <p>Undangan Digital Premium © 2026. Dibuat dengan penuh cinta.</p>
+        <p className="cmp-footer-cities">
+          Melayani pengiriman undangan digital di <strong>Nganjuk</strong>, <strong>Kediri</strong>,{' '}
+          <strong>Bojonegoro</strong>, <strong>Madiun</strong>, <strong>Jombang</strong>,{' '}
+          <strong>Surabaya</strong>, <strong>Jakarta</strong>, dan seluruh Indonesia.
+        </p>
       </footer>
     </div>
   )
