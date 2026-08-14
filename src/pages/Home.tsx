@@ -141,13 +141,36 @@ const FAQS = [
   },
 ]
 
-type SectionProps = { children: ReactNode; id?: string }
+type SectionProps = { children: ReactNode; id?: string; bg?: string; wave?: boolean; stripes?: boolean }
 
-function CompanySection({ children, id }: SectionProps) {
+function CompanySection({ children, id, bg = '', wave = false, stripes = false }: SectionProps) {
   return (
-    <section id={id} className="cmp-section">
-      {children}
+    <section id={id} className={`cmp-section-wrap cmp-bg-${bg}`}>
+      {stripes && <StripeDivider />}
+      {wave && <Wave />}
+      <div className="cmp-section">{children}</div>
     </section>
+  )
+}
+
+function StripeDivider() {
+  return <div className="cmp-stripes" aria-hidden="true" />
+}
+
+function Wave() {
+  return (
+    <div className="cmp-wave" aria-hidden="true">
+      <svg viewBox="0 0 1440 110" preserveAspectRatio="none" className="cmp-wave-svg">
+        <path
+          className="cmp-wave-layer"
+          d="M0,64 C240,96 420,24 720,52 C1020,80 1200,20 1440,56 L1440,110 L0,110 Z"
+        />
+        <path
+          className="cmp-wave-layer cmp-wave-layer-2"
+          d="M0,78 C260,110 460,40 720,66 C980,92 1200,44 1440,72 L1440,110 L0,110 Z"
+        />
+      </svg>
+    </div>
   )
 }
 
@@ -391,7 +414,7 @@ function Home() {
         </div>
       </section>
 
-      <CompanySection id="features">
+      <CompanySection id="features" bg="purple" wave>
         <Reveal>
           <SectionTitle
             kicker="Fitur Lengkap"
@@ -414,7 +437,7 @@ function Home() {
         </div>
       </CompanySection>
 
-      <CompanySection id="themes">
+      <CompanySection id="themes" bg="blue" stripes>
         <Reveal>
           <SectionTitle
             kicker="Pilihan Tema"
@@ -438,7 +461,7 @@ function Home() {
         </div>
       </CompanySection>
 
-      <CompanySection id="steps">
+      <CompanySection id="steps" bg="green" wave>
         <Reveal>
           <SectionTitle
             kicker="Cara Kerja"
@@ -459,7 +482,7 @@ function Home() {
         </div>
       </CompanySection>
 
-      <CompanySection id="paket">
+      <CompanySection id="paket" bg="orange" stripes>
         <Reveal>
           <SectionTitle
             kicker="List Harga"
@@ -497,7 +520,7 @@ function Home() {
         </div>
       </CompanySection>
 
-      <CompanySection id="testimonials">
+      <CompanySection id="testimonials" bg="pink" wave>
         <Reveal>
           <SectionTitle
             kicker="Testimoni"
@@ -508,7 +531,7 @@ function Home() {
         <TestimonialSlider />
       </CompanySection>
 
-      <CompanySection id="faq">
+      <CompanySection id="faq" bg="indigo" wave>
         <Reveal>
           <SectionTitle kicker="FAQ" title="Pertanyaan Umum" />
         </Reveal>
@@ -521,7 +544,7 @@ function Home() {
         </div>
       </CompanySection>
 
-      <CompanySection id="kontak">
+      <CompanySection id="kontak" bg="cta">
         <Reveal>
           <div className="cmp-cta">
             <h2>Siap Membuat Undangan Impian Anda?</h2>

@@ -348,10 +348,73 @@
 }
 
 /* ===== Sections ===== */
+.cmp-section-wrap {
+  position: relative;
+  padding: 90px 0 110px;
+}
+
+.cmp-bg-purple { background: linear-gradient(180deg, #f5edff, #ede1ff); --cmp-wave-fill: #f5edff; }
+.cmp-bg-blue { background: linear-gradient(180deg, #eaf4ff, #dceeff); --cmp-wave-fill: #eaf4ff; }
+.cmp-bg-green { background: linear-gradient(180deg, #e9fbf3, #d6f7e6); --cmp-wave-fill: #e9fbf3; }
+.cmp-bg-orange { background: linear-gradient(180deg, #fff4e0, #ffe8c7); --cmp-wave-fill: #fff4e0; }
+.cmp-bg-pink { background: linear-gradient(180deg, #fdeef6, #fbdceb); --cmp-wave-fill: #fdeef6; }
+.cmp-bg-indigo { background: linear-gradient(180deg, #eef0ff, #e2e6ff); --cmp-wave-fill: #eef0ff; }
+.cmp-bg-cta {
+  background: linear-gradient(120deg, #7c3aed, #6d28d9);
+  --cmp-wave-fill: #7c3aed;
+}
+
 .cmp-section {
-  padding: 100px 24px;
+  padding: 0 24px;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+}
+
+/* ===== Diagonal stripe divider ===== */
+.cmp-stripes {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  right: 0;
+  height: 120px;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      var(--cmp-wave-fill, #fff) 0px,
+      var(--cmp-wave-fill, #fff) 26px,
+      rgba(255, 255, 255, 0.65) 26px,
+      rgba(255, 255, 255, 0.65) 52px
+    );
+  opacity: 0.9;
+}
+
+/* ===== Wave divider ===== */
+.cmp-wave {
+  position: absolute;
+  top: -70px;
+  left: 0;
+  right: 0;
+  height: 140px;
+  overflow: hidden;
+  line-height: 0;
+  pointer-events: none;
+}
+
+.cmp-wave-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.cmp-wave-layer {
+  fill: var(--cmp-wave-fill, var(--color-text));
+}
+
+.cmp-wave-layer-2 {
+  fill: var(--cmp-wave-fill, var(--color-text));
+  opacity: 0.55;
 }
 
 .cmp-title {
