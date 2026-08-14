@@ -491,7 +491,10 @@ function Home() {
       </CompanySection>
 
       <footer className="cmp-footer">
-        <span className="cmp-logo">Neo Digitalizer</span>
+        <span className="cmp-logo cmp-logo-footer">
+          <img className="cmp-logo-img" src={`${import.meta.env.BASE_URL}logo.png`} alt="Neo Digitalizer logo" />
+          <span>Neo Digitalizer</span>
+        </span>
         <p>Undangan Digital Premium © 2026. Dibuat dengan penuh cinta.</p>
         <p className="cmp-footer-cities">
           Melayani pengiriman undangan digital di <strong>Nganjuk</strong>, <strong>Kediri</strong>,{' '}

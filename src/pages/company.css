@@ -51,6 +51,16 @@
   color: var(--color-gold);
   letter-spacing: 2px;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cmp-logo-img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .cmp-cta-btn {
@@ -782,8 +792,15 @@
 }
 
 .cmp-footer .cmp-logo {
-  display: block;
+  display: inline-flex;
+  justify-content: center;
   margin-bottom: 8px;
+  color: var(--color-gold);
+}
+
+.cmp-footer .cmp-logo-img {
+  width: 44px;
+  height: 44px;
 }
 
 .cmp-footer p {

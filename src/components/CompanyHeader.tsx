@@ -50,7 +50,8 @@ function CompanyHeader() {
           window.scrollTo({ top: 0, behavior: 'smooth' })
         }}
       >
-        Neo Digitalizer
+        <img className="cmp-logo-img" src={`${import.meta.env.BASE_URL}logo.png`} alt="Neo Digitalizer logo" />
+        <span>Neo Digitalizer</span>
       </a>
 
       <nav className="cmp-nav-links">
