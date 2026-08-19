@@ -1,10 +1,19 @@
 import React from 'react';
-import topCenter from '../assets/ornaments/top-center.png';
-import topLeft from '../assets/ornaments/top-left.png';
-import topRight from '../assets/ornaments/top-right.png';
-import bottomCenter from '../assets/ornaments/bottom-center.png';
-import bottomLeft from '../assets/ornaments/bottom-left.png';
-import bottomRight from '../assets/ornaments/bottom-right.png';
+import { useTheme } from '../context/ThemeContext';
+
+const images = import.meta.glob(
+  '../assets/*/{top-center,top-left,top-right,bottom-center,bottom-left,bottom-right}.png',
+  { eager: true, import: 'default' },
+) as Record<string, string>;
+
+const ORNAMENT_POSITIONS = [
+  'top-center',
+  'top-left',
+  'top-right',
+  'bottom-center',
+  'bottom-left',
+  'bottom-right',
+] as const;
 
 const ornamentStyle: React.CSSProperties = {
   position: 'absolute',
@@ -13,15 +22,42 @@ const ornamentStyle: React.CSSProperties = {
   zIndex: 0,
 };
 
-const SectionOrnaments: React.FC = () => (
-  <>
-    <img src={topCenter} alt="" style={{ ...ornamentStyle, top: '30px', left: '50%', transform: 'translateX(-50%)', maxWidth: '200px', opacity: 1 }} />
-    <img src={bottomCenter} alt="" style={{ ...ornamentStyle, bottom: '30px', left: '50%', transform: 'translateX(-50%)', maxWidth: '200px', opacity: 1 }} />
-    <img src={topLeft} alt="" style={{ ...ornamentStyle, top: '12px', left: '12px', width: '68px', opacity: 1 }} />
-    <img src={topRight} alt="" style={{ ...ornamentStyle, top: '12px', right: '12px', width: '68px', opacity: 1 }} />
-    <img src={bottomLeft} alt="" style={{ ...ornamentStyle, bottom: '12px', left: '12px', width: '68px', opacity: 1 }} />
-    <img src={bottomRight} alt="" style={{ ...ornamentStyle, bottom: '12px', right: '12px', width: '68px', opacity: 1 }} />
-  </>
-);
+const SectionOrnaments: React.FC = () => {
+  const theme = useTheme();
+  const hasThemeSet = Boolean(images[`../assets/${theme.slug}/top-center.png`]);
+  const folder = hasThemeSet ? theme.slug : 'ornaments';
+  const src = (name: string) =>
+    images[`../assets/${folder}/${name}.png`] ?? images[`../assets/ornaments/${name}.png`];
+
+  const isClustered = folder !== 'ornaments';
+
+  const centerSize = isClustered ? '110px' : '200px';
+  const cornerSize = isClustered ? '72px' : '68px';
+
+  return (
+    <>
+      {ORNAMENT_POSITIONS.map((pos) => {
+        const [vertical, horizontal] = pos.split('-') as ['top' | 'bottom', 'center' | 'left' | 'right'];
+        const style: React.CSSProperties = { ...ornamentStyle };
+        style[vertical] = '30px';
+
+        if (horizontal === 'center') {
+          style.left = '50%';
+          style.transform = 'translateX(-50%)';
+          style.maxWidth = centerSize;
+        } else if (horizontal === 'left') {
+          style.left = '12px';
+          style.width = cornerSize;
+        } else {
+          style.right = '12px';
+          style.width = cornerSize;
+        }
+
+        style.opacity = 1;
+        return <img key={pos} src={src(pos)} alt="" style={style} />;
+      })}
+    </>
+  );
+};
 
 export default SectionOrnaments;
