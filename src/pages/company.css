@@ -112,6 +112,12 @@
   background: rgba(124, 58, 237, 0.14);
 }
 
+.cmp-nav-links button.cmp-active {
+  color: var(--color-gold-bright);
+  background: rgba(124, 58, 237, 0.2);
+  box-shadow: inset 0 -2px 0 var(--color-gold);
+}
+
 .cmp-nav-actions {
   display: flex;
   align-items: center;
@@ -1174,6 +1180,11 @@
   .cmp-nav-mobile button:hover {
     color: var(--color-gold-bright);
     background: rgba(124, 58, 237, 0.14);
+  }
+
+  .cmp-nav-mobile button.cmp-active {
+    color: var(--color-gold-bright);
+    background: rgba(124, 58, 237, 0.2);
   }
 
   .cmp-nav-mobile .cmp-cta-btn {

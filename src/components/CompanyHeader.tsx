@@ -20,6 +20,7 @@ function CompanyHeader() {
   const [scrolled, setScrolled] = useState(false)
   const [hidden, setHidden] = useState(false)
   const [showToTop, setShowToTop] = useState(false)
+  const [activeId, setActiveId] = useState('features')
 
   useEffect(() => {
     let lastY = window.scrollY
@@ -32,6 +33,22 @@ function CompanyHeader() {
     }
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveId(entry.target.id)
+        })
+      },
+      { rootMargin: '-40% 0px -55% 0px', threshold: 0 },
+    )
+    NAV_ITEMS.forEach((item) => {
+      const el = document.getElementById(item.id)
+      if (el) observer.observe(el)
+    })
+    return () => observer.disconnect()
   }, [])
 
   const handleClick = (id: string) => {
@@ -59,7 +76,12 @@ function CompanyHeader() {
 
       <nav className="cmp-nav-links">
         {NAV_ITEMS.map((item) => (
-          <button key={item.id} type="button" onClick={() => handleClick(item.id)}>
+          <button
+            key={item.id}
+            type="button"
+            className={activeId === item.id ? 'cmp-active' : ''}
+            onClick={() => handleClick(item.id)}
+          >
             {item.label}
           </button>
         ))}
@@ -83,7 +105,12 @@ function CompanyHeader() {
       {menuOpen && (
         <div className="cmp-nav-mobile">
           {NAV_ITEMS.map((item) => (
-            <button key={item.id} type="button" onClick={() => handleClick(item.id)}>
+            <button
+              key={item.id}
+              type="button"
+              className={activeId === item.id ? 'cmp-active' : ''}
+              onClick={() => handleClick(item.id)}
+            >
               {item.label}
             </button>
           ))}
