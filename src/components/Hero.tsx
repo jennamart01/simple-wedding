@@ -5,6 +5,11 @@ import SectionOrnaments from './SectionOrnaments';
 import { Mail } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
+const openIcons = import.meta.glob(
+  '../assets/*/icon-open.png',
+  { eager: true, import: 'default' },
+) as Record<string, string>;
+
 interface Props {
   guestName: string;
   onOpen: () => void;
@@ -24,6 +29,9 @@ const Hero: React.FC<Props> = ({ guestName, onOpen }) => {
     onOpen();
   };
 
+  const iconOpen = openIcons[`../assets/${theme.slug}/icon-open.png`];
+  const hasOpenIcon = Boolean(iconOpen);
+
   return (
     <section id="home" className={styles.hero}>
       <SectionOrnaments />
@@ -40,9 +48,20 @@ const Hero: React.FC<Props> = ({ guestName, onOpen }) => {
         <p className={styles.date}>{theme.date}</p>
         <p className={styles.guestLabel}>Kepada Yth.</p>
         <p className={styles.guestName}>{guestName}</p>
-        <button className="button" style={{ marginTop: '20px' }} onClick={handleClick}>
-          Buka Undangan
-        </button>
+        {hasOpenIcon ? (
+          <button
+            type="button"
+            aria-label="Buka Undangan"
+            onClick={handleClick}
+            className={styles.openIconBtn}
+          >
+            <img src={iconOpen} alt="Buka Undangan" className={styles.openIcon} />
+          </button>
+        ) : (
+          <button className="button" style={{ marginTop: '20px' }} onClick={handleClick}>
+            Buka Undangan
+          </button>
+        )}
       </div>
     </section>
   );

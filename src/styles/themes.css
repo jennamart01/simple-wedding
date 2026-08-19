@@ -39,6 +39,17 @@
   --color-text-muted: #a16a84;
 }
 
+/* --- Romantic: ornamen samping bergoyang lembut --- */
+.theme-romantic .orn-sway {
+  animation: romantic-sway 5s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+@keyframes romantic-sway {
+  0%, 100% { transform: rotate(-3deg) translateY(0); }
+  50% { transform: rotate(3deg) translateY(-4px); }
+}
+
 .theme-bloom {
   --color-bg: #ecfdf5;
   --color-bg-alt: #d1fae5;
@@ -63,4 +74,45 @@
   --color-accent-light: rgba(14, 165, 233, 0.12);
   --color-text: #1e2a4a;
   --color-text-muted: #6a7ba6;
+}
+
+/* --- Midnight: ornamen & bintang yang berkilau (shimmer / twinkle) --- */
+
+/* Ornamen tunggal berdenyut kilau biru */
+.theme-midnight .orn-shimmer {
+  animation: midnight-shimmer 3.6s ease-in-out infinite;
+}
+
+/* Starfield partikel bintang di latar */
+.theme-midnight .midnight-star {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 0%, #bfe9ff 45%, rgba(191, 233, 255, 0) 70%);
+  box-shadow: 0 0 6px rgba(56, 189, 248, 0.8);
+  animation: midnight-twinkle var(--star-dur, 3.5s) ease-in-out infinite;
+}
+
+@keyframes midnight-shimmer {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 3px rgba(56, 189, 248, 0));
+    opacity: 0.85;
+  }
+  50% {
+    filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.9));
+    opacity: 1;
+  }
+}
+
+@keyframes midnight-twinkle {
+  0%,
+  100% {
+    transform: scale(0.4);
+    opacity: 0.1;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
 }
