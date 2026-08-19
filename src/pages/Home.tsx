@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import {
@@ -360,6 +360,46 @@ function TestimonialSlider() {
   )
 }
 
+function ParallaxCTA() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const [offsetY, setOffsetY] = useState(0)
+
+  useEffect(() => {
+    const onScroll = () => {
+      const el = sectionRef.current
+      if (!el) return
+      const rect = el.getBoundingClientRect()
+      const fromCenter = rect.top + rect.height / 2 - window.innerHeight / 2
+      setOffsetY(-fromCenter * 0.3)
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    onScroll()
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [])
+
+  return (
+    <section id="kontak" className="cmp-cta-parallax" ref={sectionRef}>
+      <div className="cmp-cta-bg" style={{ transform: `translateY(${offsetY}px)` }}></div>
+      <div className="cmp-cta-overlay"></div>
+      <div className="cmp-section cmp-cta-inner">
+        <Reveal>
+          <div className="cmp-cta">
+            <h2>Siap Membuat Undangan Impian Anda?</h2>
+            <p>Hubungi kami sekarang untuk konsultasi gratis dan penawaran menarik.</p>
+            <a className="cmp-btn cmp-btn-primary cmp-btn-lg" href="https://wa.me/6289636957453">
+              <MessageCircle size={18} /> Chat WhatsApp
+            </a>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  )
+}
+
 function Home() {
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -546,17 +586,7 @@ function Home() {
         </div>
       </CompanySection>
 
-      <CompanySection id="kontak" bg="cta">
-        <Reveal>
-          <div className="cmp-cta">
-            <h2>Siap Membuat Undangan Impian Anda?</h2>
-            <p>Hubungi kami sekarang untuk konsultasi gratis dan penawaran menarik.</p>
-            <a className="cmp-btn cmp-btn-primary cmp-btn-lg" href="https://wa.me/6289636957453">
-              <MessageCircle size={18} /> Chat WhatsApp
-            </a>
-          </div>
-        </Reveal>
-      </CompanySection>
+      <ParallaxCTA />
 
       <section className="cmp-marquee-sec cmp-marquee-sec-bottom">
         <Marquee items={['Mulai Rp25.000', 'Semua Fitur Termasuk', 'Cepat & Praktis', 'Konsultasi Gratis', 'Chat WhatsApp']} />
