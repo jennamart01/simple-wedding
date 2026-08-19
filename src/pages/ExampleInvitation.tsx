@@ -14,6 +14,7 @@ import Footer from '../components/Footer'
 import MusicPlayer from '../components/MusicPlayer'
 import { useSearchParams } from 'react-router-dom'
 import { ThemeProvider } from '../context/ThemeProvider'
+import { MessageCircle } from 'lucide-react'
 
 function ExampleInvitation({ themeSlug }: { themeSlug: string }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -63,6 +64,32 @@ function ExampleInvitation({ themeSlug }: { themeSlug: string }) {
           <GuestBook />
           <Footer />
         </main>
+        {isOpen && (
+          <a
+            href="https://wa.me/6289636957453"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Chat WhatsApp"
+            style={{
+              position: 'fixed',
+              right: 20,
+              bottom: 20,
+              zIndex: 60,
+              width: 56,
+              height: 56,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: '50%',
+              background: '#25D366',
+              color: '#fff',
+              boxShadow: '0 8px 20px rgba(37, 211, 102, 0.4)',
+              textDecoration: 'none',
+            }}
+          >
+            <MessageCircle size={26} />
+          </a>
+        )}
       </div>
     </ThemeProvider>
   )

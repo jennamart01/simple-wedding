@@ -37,12 +37,20 @@
 }
 
 .time {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   font-weight: 500;
   color: var(--color-accent);
   margin-bottom: 5px;
 }
 
 .venue {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   font-family: var(--font-serif);
   font-size: 1.2rem;
   margin-bottom: 5px;
@@ -55,7 +63,10 @@
 }
 
 .mapLink {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 1px;

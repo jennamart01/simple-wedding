@@ -63,6 +63,10 @@
 }
 
 .copyBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   background: var(--color-accent);
   color: #000;
   border: none;

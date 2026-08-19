@@ -84,7 +84,10 @@ section {
 }
 
 .button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   padding: 12px 30px;
   background-color: var(--color-gold);
   color: #000;

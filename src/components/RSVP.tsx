@@ -4,6 +4,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import SectionOrnaments from './SectionOrnaments';
 import { APP_SCRIPT_URL, SECRET_TOKEN } from '../config';
 import { useTheme } from '../context/ThemeContext';
+import { Send, CalendarCheck, CalendarX } from 'lucide-react';
 
 
 const RSVP: React.FC = () => {
@@ -89,7 +90,7 @@ const RSVP: React.FC = () => {
                   value="yes"
                   checked={formData.attendance === 'yes'}
                   onChange={(e) => setFormData({...formData, attendance: e.target.value})}
-                 /> In Syaa Allah, Hadir
+                 /> <CalendarCheck size={16} /> In Syaa Allah, Hadir
               </label>
               <label>
                 <input
@@ -98,7 +99,7 @@ const RSVP: React.FC = () => {
                   value="no"
                   checked={formData.attendance === 'no'}
                   onChange={(e) => setFormData({...formData, attendance: e.target.value})}
-                 /> Tidak Bisa Hadir
+                 /> <CalendarX size={16} /> Tidak Bisa Hadir
               </label>
             </div>
           </div>
@@ -114,7 +115,7 @@ const RSVP: React.FC = () => {
           </div>
 
           <button type="submit" className="button" disabled={submitting}>
-            {submitting ? 'Mengirim...' : 'Kirim Konfirmasi'}
+            {submitting ? 'Mengirim...' : <><Send size={16} /> Kirim Konfirmasi</>}
           </button>
         </form>
       </div>

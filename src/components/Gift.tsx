@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Gift.module.css';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import SectionOrnaments from './SectionOrnaments';
+import { Copy } from 'lucide-react';
 
 import bcaLogo from '../assets/images/bca.svg';
 import shopeepayLogo from '../assets/images/shopeepay.jpg';
@@ -25,14 +26,14 @@ const Gift: React.FC = () => {
           <img src={bcaLogo} alt="BCA" className={styles.bankLogo} />
           <p className={styles.accountNumber}>1234567890</p>
           <p className={styles.accountName}>A/N FATIMAH AZ-ZAHRA</p>
-          <button className={styles.copyBtn} onClick={() => handleCopy('1234567890')}>Salin Nomor</button>
+          <button className={styles.copyBtn} onClick={() => handleCopy('1234567890')}><Copy size={14} /> Salin Nomor</button>
         </div>
 
         <div className={styles.card}>
           <img src={shopeepayLogo} alt="ShopeePay" className={styles.bankLogo} />
           <p className={styles.accountNumber}>08123456789</p>
           <p className={styles.accountName}>A/N FATIMAH AZ-ZAHRA</p>
-          <button className={styles.copyBtn} onClick={() => handleCopy('08123456789')}>Salin Nomor</button>
+          <button className={styles.copyBtn} onClick={() => handleCopy('08123456789')}><Copy size={14} /> Salin Nomor</button>
         </div>
       </div>
     </section>

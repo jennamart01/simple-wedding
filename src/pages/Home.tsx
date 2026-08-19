@@ -15,6 +15,8 @@ import {
   ArrowRight,
   Star,
   Check,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react'
 import './company.css'
 import CompanyHeader from '../components/CompanyHeader'
@@ -337,7 +339,7 @@ function TestimonialSlider() {
       </div>
       <div className="cmp-slider-controls">
         <button type="button" className="cmp-slider-arrow" onClick={() => go(-1)}>
-          ‹
+          <ChevronLeft size={20} />
         </button>
         <div className="cmp-slider-dots">
           {TESTIMONIALS.map((t, i) => (
@@ -351,7 +353,7 @@ function TestimonialSlider() {
           ))}
         </div>
         <button type="button" className="cmp-slider-arrow" onClick={() => go(1)}>
-          ›
+          <ChevronRight size={20} />
         </button>
       </div>
     </div>

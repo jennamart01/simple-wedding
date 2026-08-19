@@ -3,6 +3,7 @@ import styles from './GuestBook.module.css';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import SectionOrnaments from './SectionOrnaments';
 import { APP_SCRIPT_URL, SECRET_TOKEN } from '../config';
+import { Send } from 'lucide-react';
 
 interface Message {
   name: string;
@@ -90,7 +91,7 @@ const GuestBook: React.FC = () => {
             required
           ></textarea>
           <button type="submit" className="button" disabled={submitting}>
-            {submitting ? 'Mengirim...' : 'Kirim Ucapan'}
+            {submitting ? 'Mengirim...' : <><Send size={16} /> Kirim Ucapan</>}
           </button>
           {status && <p className={styles.status}>{status}</p>}
         </form>
