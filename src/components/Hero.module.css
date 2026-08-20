@@ -62,6 +62,14 @@
   margin: 20px auto;
 }
 
+.dividerIcon {
+  display: block;
+  width: 150px;
+  max-width: 70%;
+  height: auto;
+  margin: 24px auto;
+}
+
 .date {
   font-family: var(--font-serif);
   font-style: italic;
@@ -90,28 +98,6 @@
   font-size: 1.6rem;
   color: var(--color-gold-bright);
   font-weight: 700;
-}
-
-.openIconBtn {
-  display: block;
-  margin: 24px auto 0;
-  padding: 0;
-  border: none;
-  background: none;
-  cursor: pointer;
-  animation: bounce 1.8s ease-in-out infinite;
-}
-
-.openIcon {
-  display: block;
-  width: 150px;
-  max-width: 70%;
-  height: auto;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
 }
 
 @keyframes fadeIn {

@@ -30,7 +30,7 @@ const Hero: React.FC<Props> = ({ guestName, onOpen }) => {
   };
 
   const iconOpen = openIcons[`../assets/${theme.slug}/icon-open.png`];
-  const hasOpenIcon = Boolean(iconOpen);
+  const isRomanticDivider = theme.slug === 'romantic' && Boolean(iconOpen);
 
   return (
     <section id="home" className={styles.hero}>
@@ -44,24 +44,17 @@ const Hero: React.FC<Props> = ({ guestName, onOpen }) => {
         <Mail className={styles.mailIcon} />
         <p className={styles.subtitle}>Pernikahan</p>
         <h1 className={styles.title}>{theme.couple}</h1>
-        <FlourishDivider className={styles.divider} />
+        {isRomanticDivider ? (
+          <img src={iconOpen} alt="" className={styles.dividerIcon} />
+        ) : (
+          <FlourishDivider className={styles.divider} />
+        )}
         <p className={styles.date}>{theme.date}</p>
         <p className={styles.guestLabel}>Kepada Yth.</p>
         <p className={styles.guestName}>{guestName}</p>
-        {hasOpenIcon ? (
-          <button
-            type="button"
-            aria-label="Buka Undangan"
-            onClick={handleClick}
-            className={styles.openIconBtn}
-          >
-            <img src={iconOpen} alt="Buka Undangan" className={styles.openIcon} />
-          </button>
-        ) : (
-          <button className="button" style={{ marginTop: '20px' }} onClick={handleClick}>
-            Buka Undangan
-          </button>
-        )}
+        <button className="button" style={{ marginTop: '20px' }} onClick={handleClick}>
+          Buka Undangan
+        </button>
       </div>
     </section>
   );

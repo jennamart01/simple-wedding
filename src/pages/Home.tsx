@@ -162,14 +162,18 @@ function StripeDivider() {
 function Wave() {
   return (
     <div className="cmp-wave" aria-hidden="true">
-      <svg viewBox="0 0 1440 110" preserveAspectRatio="none" className="cmp-wave-svg">
+      <svg viewBox="0 0 1440 320" preserveAspectRatio="none" className="cmp-wave-svg">
         <path
-          className="cmp-wave-layer"
-          d="M0,64 C240,96 420,24 720,52 C1020,80 1200,20 1440,56 L1440,110 L0,110 Z"
+          className="cmp-wave-layer cmp-wave-layer-1"
+          d="M0,160 C220,300 460,80 720,180 C980,280 1220,60 1440,160 L1440,320 L0,320 Z"
         />
         <path
           className="cmp-wave-layer cmp-wave-layer-2"
-          d="M0,78 C260,110 460,40 720,66 C980,92 1200,44 1440,72 L1440,110 L0,110 Z"
+          d="M0,220 C240,120 480,320 720,230 C960,140 1200,300 1440,210 L1440,320 L0,320 Z"
+        />
+        <path
+          className="cmp-wave-layer cmp-wave-layer-3"
+          d="M0,276 C200,200 440,340 720,272 C1000,204 1240,320 1440,250 L1440,320 L0,320 Z"
         />
       </svg>
     </div>
