@@ -146,36 +146,45 @@ const FAQS = [
 type SectionProps = { children: ReactNode; id?: string; bg?: string; wave?: string; stripes?: boolean }
 
 const WAVES: Record<string, string[]> = {
-  curl: [
-    'M0,150 C220,320 460,40 720,180 C980,320 1220,40 1440,180 L1440,320 L0,320 Z',
-    'M0,220 C240,120 480,320 720,220 C960,120 1200,320 1440,220 L1440,320 L0,320 Z',
-    'M0,280 C220,220 460,320 720,270 C980,220 1220,320 1440,270 L1440,320 L0,320 Z',
-  ],
-  double: [
-    'M0,180 C180,320 320,40 480,180 C640,320 800,40 960,180 C1120,320 1280,40 1440,180 L1440,320 L0,320 Z',
-    'M0,240 C240,140 400,320 600,230 C800,140 960,320 1160,230 L1440,260 L1440,320 L0,320 Z',
-  ],
-  sharp: [
-    'M0,120 L160,40 L360,280 L560,60 L760,300 L960,80 L1160,280 L1360,60 L1440,120 L1440,320 L0,320 Z',
-    'M0,220 L220,160 L440,300 L660,180 L880,300 L1100,200 L1320,300 L1440,240 L1440,320 L0,320 Z',
-  ],
-  soft: [
-    'M0,160 C240,300 480,60 720,180 C960,300 1200,60 1440,180 L1440,320 L0,320 Z',
-    'M0,240 C280,140 540,320 780,230 C1020,140 1260,300 1440,240 L1440,320 L0,320 Z',
-    'M0,300 C200,240 480,340 760,280 C1040,220 1240,320 1440,280 L1440,320 L0,320 Z',
-  ],
+  curl: ['M0,44 C240,8 460,96 720,30 C980,100 1220,6 1440,46 L1440,160 L0,160 Z'],
+  double: ['M0,40 C160,90 280,8 440,8 C600,8 700,96 840,96 C1000,96 1120,8 1280,8 C1400,8 1440,50 1440,44 L1440,160 L0,160 Z'],
+  sharp: ['M0,60 L120,18 L260,92 L400,18 L540,100 L680,18 L820,104 L960,18 L1100,100 L1240,18 L1380,88 L1440,56 L1440,160 L0,160 Z'],
+  soft: ['M0,50 C220,12 460,92 720,34 C980,12 1220,92 1440,50 L1440,160 L0,160 Z'],
   layered: [
-    'M0,120 C240,320 480,40 720,200 C960,360 1200,60 1440,180 L1440,320 L0,320 Z',
-    'M0,200 C260,80 520,320 760,180 C1000,40 1240,300 1440,200 L1440,320 L0,320 Z',
-    'M0,270 C220,200 460,320 700,260 C940,200 1180,300 1440,250 L1440,320 L0,320 Z',
+    'M0,36 C240,92 480,6 720,56 C960,92 1200,6 1440,36 L1440,160 L0,160 Z',
+    'M0,96 C240,44 480,120 720,84 C960,44 1200,120 1440,96 L1440,160 L0,160 Z',
   ],
+}
+
+function NotchDivider() {
+  const peaks = []
+  for (let x = 0; x < 1440; x += 160) peaks.push(`${x},64 ${x + 80},6 ${x + 160},64`)
+  return (
+    <div className="cmp-divider" aria-hidden="true">
+      <svg viewBox="0 0 1440 160" preserveAspectRatio="none" className="cmp-divider-svg">
+        <path d={`M0,160 L0,64 ${peaks.join(' ')} L1440,160 Z`} />
+      </svg>
+    </div>
+  )
+}
+
+function CircleDivider() {
+  return (
+    <div className="cmp-divider cmp-divider-circles" aria-hidden="true">
+      {Array.from({ length: 7 }).map((_, i) => (
+        <span key={i} className="cmp-divider-circle" />
+      ))}
+    </div>
+  )
 }
 
 function CompanySection({ children, id, bg = '', wave = '', stripes = false }: SectionProps) {
   return (
     <section id={id} className={`cmp-section-wrap cmp-bg-${bg}`}>
       {stripes && <StripeDivider />}
-      {wave && <Wave variant={wave} />}
+      {wave === 'circles' && <CircleDivider />}
+      {wave === 'notch' && <NotchDivider />}
+      {wave && wave !== 'circles' && wave !== 'notch' && <Wave variant={wave} />}
       <div className="cmp-section">{children}</div>
     </section>
   )
@@ -188,14 +197,10 @@ function StripeDivider() {
 function Wave({ variant }: { variant: string }) {
   const paths = WAVES[variant] || WAVES.curl
   return (
-    <div className={`cmp-wave cmp-wave-${variant}`} aria-hidden="true">
-      <svg viewBox="0 0 1440 320" preserveAspectRatio="none" className="cmp-wave-svg">
+    <div className="cmp-divider" aria-hidden="true">
+      <svg viewBox="0 0 1440 160" preserveAspectRatio="none" className="cmp-divider-svg">
         {paths.map((d, i) => (
-          <path
-            key={i}
-            className={`cmp-wave-layer cmp-wave-layer-${i + 1}`}
-            d={d}
-          />
+          <path key={i} d={d} style={{ opacity: paths.length > 1 ? [1, 0.5][i] : 1 }} />
         ))}
       </svg>
     </div>
@@ -505,7 +510,7 @@ function Home() {
         </div>
       </CompanySection>
 
-      <CompanySection id="themes" bg="blue" wave="double">
+      <CompanySection id="themes" bg="blue" wave="circles">
         <Reveal>
           <SectionTitle
             kicker="Pilihan Tema"
@@ -550,7 +555,7 @@ function Home() {
         </div>
       </CompanySection>
 
-      <CompanySection id="paket" bg="orange" wave="soft">
+      <CompanySection id="paket" bg="orange" wave="notch">
         <Reveal>
           <SectionTitle
             kicker="List Harga"
@@ -599,7 +604,7 @@ function Home() {
         <TestimonialSlider />
       </CompanySection>
 
-      <CompanySection id="faq" bg="indigo" wave="curl">
+      <CompanySection id="faq" bg="indigo" wave="double">
         <Reveal>
           <SectionTitle kicker="FAQ" title="Pertanyaan Umum" />
         </Reveal>

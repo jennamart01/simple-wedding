@@ -396,43 +396,52 @@
   opacity: 0.9;
 }
 
-/* ===== Wave divider ===== */
-.cmp-wave {
+/* ===== Section divider (wave / circle / notch) ===== */
+.cmp-divider {
   position: absolute;
-  top: -120px;
+  top: -80px;
   left: 0;
   right: 0;
-  height: 300px;
+  height: 160px;
   overflow: hidden;
   line-height: 0;
   pointer-events: none;
+  z-index: 1;
 }
 
-.cmp-wave-svg {
+.cmp-divider-svg {
   width: 100%;
   height: 100%;
   display: block;
 }
 
-.cmp-wave-layer-1 {
+.cmp-divider path {
   fill: var(--cmp-wave-fill, var(--color-text));
-  opacity: 1;
 }
 
-.cmp-wave-layer-2 {
-  fill: var(--cmp-wave-fill, var(--color-text));
-  opacity: 0.45;
+.cmp-divider-circles {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0 24px;
 }
 
-.cmp-wave-layer-3 {
-  fill: var(--cmp-wave-fill, var(--color-text));
-  opacity: 0.22;
+.cmp-divider-circle {
+  flex-shrink: 0;
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  background: var(--cmp-wave-fill, var(--color-text));
 }
 
 @media (max-width: 768px) {
-  .cmp-wave {
-    top: -60px;
-    height: 170px;
+  .cmp-divider {
+    top: -50px;
+    height: 110px;
+  }
+  .cmp-divider-circle {
+    width: 140px;
+    height: 140px;
   }
 }
 
